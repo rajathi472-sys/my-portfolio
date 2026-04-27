@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajathi P — Software Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Poppins', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #0a0a0a; color: #fff; }
+
+        /* Navbar */
+        .navbar { background: rgba(10,10,10,0.95) !important; backdrop-filter: blur(10px); border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 999; }
+        .navbar-brand { font-weight: 700; font-size: 1.4rem; color: #6c63ff !important; text-decoration: none; }
+        .nav-link { color: #ccc !important; font-weight: 500; transition: color 0.3s; text-decoration: none; padding: 8px 14px; }
+        .nav-link:hover { color: #6c63ff !important; }
+        .navbar-toggler { background: transparent; border: 1px solid #444; color: #fff; padding: 6px 10px; cursor: pointer; border-radius: 6px; }
+        .nav-menu { display: flex; gap: 4px; list-style: none; }
+
+        /* Buttons */
+        .btn-outline-primary { border: 1px solid #6c63ff; color: #6c63ff; border-radius: 30px; padding: 8px 24px; background: transparent; text-decoration: none; display: inline-block; transition: all 0.3s; font-weight: 500; cursor: pointer; }
+        .btn-outline-primary:hover { background: #6c63ff; color: #fff; }
+        .btn-main { background: #6c63ff; color: #fff; border-radius: 30px; padding: 10px 28px; text-decoration: none; display: inline-block; transition: all 0.3s; font-weight: 500; border: none; cursor: pointer; }
+        .btn-main:hover { background: #5a52d5; transform: translateY(-2px); color: #fff; }
+        .btn-ghost { border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 30px; padding: 8px 20px; text-decoration: none; display: inline-block; transition: all 0.3s; font-size: 0.85rem; }
+        .btn-ghost:hover { border-color: #6c63ff; color: #6c63ff; }
+
+        /* Cards */
+        .card { background: #111; border: 1px solid #222; border-radius: 16px; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(108,99,255,0.15); }
+
+        /* Section */
+        .section { padding: 80px 0; }
+        .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; }
+        .section-title span { color: #6c63ff; }
+        .section-subtitle { color: #888; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 8px; display: block; }
+        .divider { width: 60px; height: 4px; background: #6c63ff; border-radius: 2px; margin: 10px 0 40px 0; }
+        .divider.mx-auto { margin-left: auto; margin-right: auto; }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: radial-gradient(ellipse at 60% 50%, #1a1040 0%, #0a0a0a 70%); }
+        .hero-img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px solid #6c63ff; box-shadow: 0 0 80px rgba(108,99,255,0.4); }
+        .hero-img-placeholder { width: 300px; height: 300px; border-radius: 50%; background: linear-gradient(135deg, #1a1040, #3f3d8f); border: 4px solid #6c63ff; display: flex; align-items: center; justify-content: center; font-size: 6rem; }
+
+        /* Skills */
+        .skill-tag { background: rgba(108,99,255,0.15); color: #a78bfa; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(108,99,255,0.3); display: inline-block; margin: 4px; }
+        .skill-card { background: #111; border: 1px solid #222; border-radius: 16px; padding: 24px; height: 100%; }
+        .skill-card h6 { color: #6c63ff; font-weight: 600; margin-bottom: 15px; }
+
+        /* Projects */
+        .project-card { background: #111; border: 1px solid #222; border-radius: 16px; overflow: hidden; height: 100%; transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(108,99,255,0.15); }
+        .project-card img { width: 100%; height: 195px; object-fit: cover; border-bottom: 1px solid #222; }
+        .project-img-placeholder { width: 100%; height: 195px; background: linear-gradient(135deg, #1a1040, #2d2060); display: flex; align-items: center; justify-content: center; font-size: 3rem; border-bottom: 1px solid #222; }
+        .project-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+        .project-cat { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; color: #6c63ff; text-transform: uppercase; }
+        .project-title { color: #fff; font-weight: 600; margin: 8px 0; font-size: 1rem; }
+        .project-desc { color: #aaa; font-size: 0.85rem; line-height: 1.7; flex: 1; }
+        .read-more-btn { background: transparent; border: none; color: #6c63ff; font-size: 0.8rem; text-align: left; padding: 4px 0; cursor: pointer; margin-top: 8px; }
+
+        /* Contact */
+        .contact-card { background: #111; border: 1px solid #222; border-radius: 16px; padding: 40px; }
+        .form-label { color: #aaa; margin-bottom: 8px; display: block; font-size: 0.9rem; }
+        .form-control { width: 100%; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 10px; padding: 12px 16px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; transition: border-color 0.3s; outline: none; }
+        .form-control:focus { border-color: #6c63ff; }
+        textarea.form-control { resize: vertical; min-height: 130px; }
+        .submit-btn { width: 100%; background: #6c63ff; color: #fff; border: none; border-radius: 30px; padding: 14px; font-size: 1rem; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s; margin-top: 8px; }
+        .submit-btn:hover { background: #5a52d5; transform: translateY(-2px); }
+        .success-msg { background: rgba(108,99,255,0.15); border: 1px solid #6c63ff; color: #a78bfa; border-radius: 12px; padding: 12px 20px; margin-bottom: 20px; display: none; }
+
+        /* Footer */
+        footer { background: #111; border-top: 1px solid #222; padding: 30px 0; text-align: center; color: #888; }
+        footer a { color: #6c63ff; text-decoration: none; margin: 0 10px; font-size: 1.3rem; transition: color 0.3s; }
+        footer a:hover { color: #a78bfa; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #6c63ff; border-radius: 3px; }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; right: 0; background: #0a0a0a; border: 1px solid #222; border-radius: 12px; padding: 12px; min-width: 180px; }
+            .nav-menu.open { display: flex; }
+            .navbar-inner { position: relative; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        }
+        @media (min-width: 992px) {
+            .navbar-toggler { display: none; }
+        }
+        @media (max-width: 768px) {
+            .hero-img, .hero-img-placeholder { width: 220px; height: 220px; font-size: 4rem; }
+            .section-title { font-size: 1.8rem; }
+            .contact-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+            <a class="navbar-brand" href="#home">RP</a>
+            <button class="navbar-toggler" onclick="toggleNav()" aria-label="Toggle menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a class="nav-link" href="#home" onclick="closeNav()">Home</a></li>
+                <li><a class="nav-link" href="#skills" onclick="closeNav()">Skills</a></li>
+                <li><a class="nav-link" href="#projects" onclick="closeNav()">Projects</a></li>
+                <li><a class="nav-link" href="#contact" onclick="closeNav()">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-6">
+                <p style="color:#6c63ff; font-weight:600; letter-spacing:2px; margin-bottom:12px;">HELLO, I'M</p>
+                <h1 style="font-size:3rem; font-weight:700; line-height:1.2; margin-bottom:16px;">
+                    Rajathi P<br>
+                    <span style="color:#6c63ff;">Software Developer</span>
+                </h1>
+                <p style="color:#aaa; font-size:1rem; line-height:1.8; margin-bottom:32px;">
+                    I'm a Software Developer (2026) with a CGPA of 8.28, focused on building web applications using Python and Django.
+                    I have hands-on experience creating full-stack projects, designing REST APIs, and working with MySQL.
+                    I've also completed an internship as a Python Backend Developer and enjoy building scalable backend systems.
+                </p>
+                <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                    <a href="#projects" class="btn-outline-primary">View Projects</a>
+                    <a href="#contact" class="btn-outline-primary">Hire Me</a>
+                    <!-- Replace href below with your actual resume PDF path -->
+                    <a href="resume.pdf" download class="btn-outline-primary">
+                        <i class="fas fa-download" style="margin-right:6px;"></i>Resume
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="assets/profile.jpg" alt="Rajathi P" class="hero-img">
+                <!-- Replace src with your actual photo path e.g. assets/profile.jpg -->
+                <!-- If you have the image, use: <img src="assets/profile.jpg" alt="Rajathi P" class="hero-img"> -->
+                <div class="hero-img-placeholder mx-auto">👩‍💻</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section" style="background:#0d0d0d;">
+    <div class="container">
+        <span class="section-subtitle text-center d-block">WHAT I KNOW</span>
+        <h2 class="section-title text-center">My <span>Skills</span></h2>
+        <div class="divider mx-auto"></div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <h6><i class="fas fa-layer-group" style="margin-right:8px;"></i>Languages</h6>
+                    <div>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <h6><i class="fas fa-layer-group" style="margin-right:8px;"></i>Frameworks</h6>
+                    <div>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Django REST Framework (DRF)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <h6><i class="fas fa-layer-group" style="margin-right:8px;"></i>Frontend</h6>
+                    <div>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <h6><i class="fas fa-layer-group" style="margin-right:8px;"></i>Databases</h6>
+                    <div>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <h6><i class="fas fa-layer-group" style="margin-right:8px;"></i>Tools & Platforms</h6>
+                    <div>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Postman</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="skill-card">
+                    <h6><i class="fas fa-layer-group" style="margin-right:8px;"></i>Core Concepts</h6>
+                    <div>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">DBMS</span>
+                        <span class="skill-tag">Session-based Auth</span>
+                        <span class="skill-tag">Role-based Access Control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <div class="container">
+        <span class="section-subtitle text-center d-block">WHAT I'VE BUILT</span>
+        <h2 class="section-title text-center">My <span>Projects</span></h2>
+        <div class="divider mx-auto"></div>
+
+        <div class="row g-4">
+
+            <!-- Project 1: Portfolio -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card d-flex flex-column">
+                    <!-- Replace with: <img src="assets/portfolio.jpg" alt="Portfolio"> -->
+                    <div class="project-img-placeholder">🗂️</div>
+                    <div class="project-body">
+                        <span class="project-cat">Web Development</span>
+                        <h5 class="project-title">Portfolio</h5>
+                        <p class="project-desc" id="desc1-short">
+                            A responsive personal portfolio website developed using Python and Django. Features include a dynamic project showcase with category filtering...
+                        </p>
+                        <p class="project-desc" id="desc1-full" style="display:none;">
+                            A responsive personal portfolio website developed using Python and Django. Features include a dynamic project showcase with category filtering, skills display, contact form with email integration, and an admin panel for easy content management. Built with Bootstrap for responsive design.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc('desc1-short','desc1-full',this)">
+                            Read more <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+                        </button>
+                        <div style="display:flex; gap:8px; margin-top:16px;">
+                            <!-- Replace with your actual GitHub URL -->
+                            <a href="https://github.com/rajathi472-sys" target="_blank" class="btn-ghost">
+                                <i class="fab fa-github" style="margin-right:4px;"></i>Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Student Portal -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card d-flex flex-column">
+                    <!-- Replace with: <img src="assets/portal.jpg" alt="Student Portal"> -->
+                    <div class="project-img-placeholder">🎓</div>
+                    <div class="project-body">
+                        <span class="project-cat">Web Development</span>
+                        <h5 class="project-title">Student Portal</h5>
+                        <p class="project-desc" id="desc2-short">
+                            The Student Portal is a comprehensive web-based platform designed to streamline academic and administrative activities for an educational...
+                        </p>
+                        <p class="project-desc" id="desc2-full" style="display:none;">
+                            The Student Portal is a comprehensive web-based platform designed to streamline academic and administrative activities for an educational institution. Features include student registration, course management, grade tracking, and role-based access for admins and students. Built using Django with MySQL.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleDesc('desc2-short','desc2-full',this)">
+                            Read more <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>
+                        </button>
+                        <div style="display:flex; gap:8px; margin-top:16px;">
+                            <!-- Replace with your actual GitHub URL -->
+                            <a href="https://github.com/rajathi472-sys" target="_blank" class="btn-ghost">
+                                <i class="fab fa-github" style="margin-right:4px;"></i>Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more projects here following the same pattern -->
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section" style="background:#0d0d0d;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <span class="section-subtitle text-center d-block">GET IN TOUCH</span>
+                <h2 class="section-title text-center">Contact <span>Me</span></h2>
+                <div class="divider mx-auto"></div>
+
+                <div class="contact-card mt-4">
+                    <div class="success-msg" id="successMsg">✅ Your message was sent successfully! I'll get back to you soon.</div>
+
+                    <!--
+                        OPTION A (recommended): Use Formspree for free contact form
+                        1. Go to https://formspree.io and create a free account
+                        2. Create a new form and get your form ID
+                        3. Replace YOUR_FORM_ID below with your actual ID
+                        4. Change the action URL below and remove onsubmit
+                    -->
+                    <form action="https://formspree.io/f/mnjlygjn" method="POST" id="contactForm" onsubmit="handleSubmit(event)">
+
+                        <div style="margin-bottom:20px;">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" name="name" required class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <label class="form-label">Your Email</label>
+                            <input type="email" name="email" required class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <label class="form-label">Message</label>
+                            <textarea name="message" rows="5" required class="form-control" placeholder="Write your message..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message 🚀</button>
+                    </form>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="https://github.com/rajathi472-sys" target="_blank" style="color:#a78bfa; font-size:2rem;">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Rajathi P. Built with Python & Django 💜</p>
+    <div style="margin-top:10px;">
+        <a href="https://github.com/rajathi472-sys" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+</footer>
+
+<script>
+function toggleNav() {
+    document.getElementById('navMenu').classList.toggle('open');
+}
+function closeNav() {
+    document.getElementById('navMenu').classList.remove('open');
+}
+
+function toggleDesc(shortId, fullId, btn) {
+    const short = document.getElementById(shortId);
+    const full = document.getElementById(fullId);
+    if (full.style.display === 'none') {
+        short.style.display = 'none';
+        full.style.display = 'block';
+        btn.innerHTML = 'Read less <i class="fas fa-chevron-up" style="font-size:0.7rem;"></i>';
+    } else {
+        short.style.display = 'block';
+        full.style.display = 'none';
+        btn.innerHTML = 'Read more <i class="fas fa-chevron-down" style="font-size:0.7rem;"></i>';
+    }
+}
+
+// For demo: shows success message locally
+// Once you add your real Formspree ID, remove this and let Formspree handle it
+function handleSubmit(e) {
+    const formId = document.querySelector('#contactForm').action;
+    if (formId.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('contactForm').reset();
+        setTimeout(() => document.getElementById('successMsg').style.display = 'none', 5000);
+    }
+    // If real Formspree ID is set, form submits normally
+}
+
+// Smooth scrolling for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+</body>
+</html>
